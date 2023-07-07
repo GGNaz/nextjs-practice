@@ -9,10 +9,12 @@ export const metadata = {
 }
 
 export default function RootLayout({
-  children,
+  children, login
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
+  login: React.ReactNode,
 }) {
+  console.log("🚀 ~ file: layout.tsx:16 ~ children:", children)
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>

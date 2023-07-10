@@ -19,7 +19,7 @@ const SignupSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
 });
 
-const MyTextField = ({ label, ...props }: any) => {
+const MyTextField = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
   return (
     <>
@@ -33,11 +33,6 @@ const MyTextField = ({ label, ...props }: any) => {
     </>
   );
 };
-interface Values {
-  firstName: string;
-  lastName: string;
-  email: string;
-}
 
 export default function page() {
   const sampleObj = {
@@ -58,7 +53,7 @@ export default function page() {
           }, 1000);
         }}
       >
-        {(props: FormikProps<Values>) => (
+        {(props) => (
           <Form>
             <MyTextField name="firstName" type="text" label="First Name" />
             <MyTextField name="lastName" type="text" label="Last Name" />

@@ -1,29 +1,49 @@
 "use client";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import axios from "axios";
 import useSWR from "swr";
-const fetcher = (url) => axios.get(url).then((res) => res.data);
-
+import getUser from "@/utils/getUser";
+import HOCLoading from "@/components/loading/HOCLoading";
 export default function Home() {
   const router = useRouter();
-  const [first, setfirst] = useState("");
+
   const isClick = (clicked) => {
     if (clicked) return router.push("/admin/dashboard");
   };
   const { data, error, isLoading } = useSWR(
     "https://fakestoreapi.com/products/1",
-    fetcher
+    getUser
   );
+
+  console.log("isLoading", isLoading);
+
+  useEffect(() => {
+    console.log("awit");
+  }, []);
   console.log("data", data);
   console.log("error", error);
   return (
-    <div className="flex w-full h-screen">
-      <button className="" onClick={() => isClick(true)}>
-        Login {isLoading}
-      </button>
-      <div className=" flex flex-col">{JSON.stringify(data, "\t")}</div>
-    </div>
+    <>
+      {/* {isLoading ? (
+        <HOCLoading />
+      ) : ( */}
+      <div className="flex flex-col items-center gap-20 w-full h-screen">
+        <button className="" onClick={() => isClick(true)}>
+          Login
+        </button>
+        <input
+          type="text"
+          className="border max-w-md"
+          onChange={(e) => {
+            console.log("nakalagay", e.target.value);
+          }}
+        />
+
+        <div className=" flex flex-col">{JSON.stringify(data, "\t")}</div>
+      </div>
+      {/* )} */}
+    </>
   );
 }

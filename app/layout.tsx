@@ -2,6 +2,7 @@
 import { SWRConfig } from "swr";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <SWRConfig value={{ provider: () => new Map() }}>{children}</SWRConfig>
+        <SWRConfig value={{ provider: () => new Map() }}> {children}</SWRConfig>
       </body>
     </html>
   );
 }
+

@@ -3,7 +3,7 @@ import Navbar from '@/components/navbar/Navbar'
 import getUser from '@/utils/getUser';
 import Image from 'next/image';
 import React from 'react'
-import { BsPlusLg, BsDashLg,BsSuitHeart,BsCart2  } from "react-icons/bs";
+import { BsPlusLg, BsFilter,BsHeartFill,BsCart2  } from "react-icons/bs";
 import useSWR from "swr";
 
 
@@ -49,7 +49,10 @@ export default function Homepage() {
         </div>
         <div className='w-full my-10  flex justify-center items-center h-full'>
         <div className='w-full flex flex-col gap-2  max-w-3xl md:max-w-4xl lg:max-w-7xl px-5 h-full'>
-        <div className='font-semibold'>List of products</div>
+          <div className='flex flex-row justify-between items-center'>
+             <div className='font-semibold'>List of products</div> <button className='p-2 bg-darkviolet text-white rounded-lg focus:outline-none'><BsFilter/></button>
+          </div>
+      
           <div className='  grid grid-cols-2 md:grid-cols-3 gap-5'>
           {
             products.map((data:any) => {
@@ -57,19 +60,25 @@ export default function Homepage() {
 ,title              } = data ?? {}
 return (
   <div className='bg-white p-5 flex flex-col  items-center shadow-lg rounded-xl relative gap-5' key={id}>
-    <button className='absolute right-5 top-5'>
-        <BsSuitHeart className='h-5 w-5 hover:text-darkviolet'/>
+    <button className='absolute right-5 top-5 flex flex-row items-center justify-center gap-1 text-red-400'>
+        <BsHeartFill className='h-5 w-5  hover:text-darkviolet'/><span>{rating?.rate}</span>
     </button>  
     <div className='h-36 w-36 md:h-52 md:w-52 flex justify-center items-center'>
     <Image src={image} alt="title" height={150} width={150} className='w-full h-full'  />
     </div>
-    <div className='flex flex-col gap-1 w-full'>
-    <div className='text-customblack font-semibold text-sm '>{title}</div>
-    <div className='flex flex-row justify-between items-center pt-3'>
-    <div className='text-gray-500'>${price}</div>
- <button className=' bg-darkviolet text-white p-2 rounded-full w-10 h-10  text-sm flex items-center justify-center'><BsPlusLg className='text-lg' /></button>
+    <div className='flex flex-col gap-3 w-full'>
+    <div className='text-customblack font-semibold text-sm truncate max-w-sm'>{title}</div>
+    <div className='flex justify-between'>
+      <div className='flex flex-col'>
+        <div className='capitalize text-xs bg-brandgray p-1 text-white'>{category}</div>
+      <div className='text-gray-500'>${price}</div>
+      </div>
+      <button className=' bg-darkviolet text-white p-2 rounded-full w-10 h-10  text-sm flex items-center justify-center'><BsPlusLg className='text-lg' /> </button>
     </div>
+
+ {/* <button className=' bg-darkviolet text-white p-2 rounded-full w-10 h-10  text-sm flex items-center justify-center'><BsPlusLg className='text-lg' /></button> */}
    
+    {/* <div className='h-full bg-darkviolet text-white flex justify-center items-center p-2 rounded-lg text-sm'>Add to cart</div> */}
  
     </div>
 

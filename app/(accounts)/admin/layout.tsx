@@ -14,11 +14,11 @@ export default function AdminLayout({ children }: any) {
   }, [routeCheck]);
   return (
     <div className="flex flex-row h-screen w-full">
-      <div className="basis-1/5 bg-slate-300">
-        
+      {/* <div className="basis-1/5 bg-slate-300">
         <Sidebar />
-      </div>
-      <div className="basis-4/5 bg-violet-200">{children}</div>
+      </div> 
+      <div className="basis-4/5 bg-violet-200">{children}</div> */}
+      {children}
     </div>
   );
 }

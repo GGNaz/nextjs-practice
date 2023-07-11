@@ -6,9 +6,11 @@ module.exports = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "selzy.com",
-        port: "",
-        pathname: "/my-bucket/**",
+        hostname: "img.freepik.com",
+      },
+      {
+        protocol: "https",
+        hostname: "fakestoreapi.com",
       },
     ],
   },

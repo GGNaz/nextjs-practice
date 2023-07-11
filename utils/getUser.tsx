@@ -9,10 +9,30 @@ const headerAuth = () => {
   };
 };
 
-export default async function getUser(url:any , method) {
 
- return axios.get(url)
- .then((response) => {
+// const selectedMethod = ({api , method, params}:FetchProps) => {
+//   switch (method) {
+//     case "POST":
+//         return axios.post(api, params)
+//         case "PUT":
+//           return axios.put(api, params)
+//           case "GET":
+//             return axios.get(api)
+//             case "DELETE":
+//               return axios.delete(api)
+    
+//   }
+// }
+
+interface FetchProps{
+  api: string,
+  method:string,
+  params?: object
+}
+
+export default async function getUser(data:any) {
+
+ return axios.get(data).then((response) => {
    return response;
  })
  .catch((err) => {

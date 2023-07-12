@@ -33,6 +33,7 @@ interface FetchProps{
 export default async function getUser(data:any) {
 
  return axios.get(data).then((response) => {
+   console.log("🚀 ~ file: getUser.tsx:36 ~ returnaxios.get ~ response:", response)
    return response;
  })
  .catch((err) => {

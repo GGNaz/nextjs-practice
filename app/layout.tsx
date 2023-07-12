@@ -3,6 +3,7 @@ import { SWRConfig } from "swr";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Suspense } from "react";
+import 'animate.css';
 
 const inter = Inter({ subsets: ["latin"] });
 

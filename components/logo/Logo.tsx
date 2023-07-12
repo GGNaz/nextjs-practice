@@ -12,7 +12,7 @@ export default function Logo({withBrandname, size, color}:CustomLogoProps) {
   const defaultSize = size ? size :40
   return (
   
-       <div className="flex gap-2 w-full items-center justify-center">
+       <div className="flex gap-2 w-full items-center">
               <Image
                 src={shoplogo}
                 alt="shoplogo"

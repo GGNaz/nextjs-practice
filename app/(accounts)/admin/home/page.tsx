@@ -98,6 +98,7 @@ export default function Homepage() {
     <div className='h-full w-full flex flex-col bg-slate-100 overflow-y-scroll '>
       {
         showBot&&(
+             
 <div className=' fixed bottom-24 right-24 bg-white h-96 rounded-t-xl  shadow-lg w-80 z-50 animate__animated animate__bounceIn'>
           <div className='flex flex-row justify-between bg-darkviolet p-3 rounded-t-xl text-white'>
           <div className=' text-sm  flex gap-2 items-center'><BsRobot className='text-xl' /><span className='font-semibold'>LazBot</span></div>
@@ -109,12 +110,14 @@ export default function Homepage() {
           </div>
           <div className='absolute bottom-0 w-full flex flex-row  border p-2'><input type='text' placeholder='Say something...' className='px-2 text-sm focus:outline-none h-9 w-full'/><button className='text-white bg-darkviolet rounded-lg p-2'><BsSend className='text-xl' /></button> </div>
         </div>
+
         )
       }
-        
-        <button className='p-5 fixed bottom-5 right-10 rounded-full bg-darkviolet shadow-lg text-white text-2xl hover:bg-darkviolet/80' onClick={() => setShowBot(!showBot)}>
+       
+        <button className='p-5 z-50 fixed bottom-5 right-10 rounded-full bg-darkviolet shadow-lg text-white text-2xl hover:bg-darkviolet/80' onClick={() => setShowBot(!showBot)}>
           <BsChatText/>
         </button>
+      
       {showFilter&&<FilterModal setShowFilter={setShowFilter} setFilteredItems={setFilteredItems} filteredItems={filteredItems}/>}
         <Navbar/>
         <div className='h-[70vh] min-h-[70vh] flex flex-col justify-center bg-[url(https://images.pexels.com/photos/4904563/pexels-photo-4904563.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)] bg-center bg-cover bg-brandviolet/20  bg-blend-soft-light'>
@@ -165,7 +168,7 @@ export default function Homepage() {
                       <div className='text-customblack font-semibold text-sm truncate max-w-sm'>{title}</div>
                       <div className='flex justify-between'>
                         <div className='flex flex-col'>
-                          <div className='capitalize text-xs bg-brandgray p-1 text-white'>{category}</div>
+                          <div className='capitalize text-xs bg-brandgray rounded-full px-2 py-1 text-white'>{category}</div>
                         <div className='text-gray-500'>${price}</div>
                         </div>
                         <button className=' bg-darkviolet text-white p-2 rounded-full w-10 h-10  text-sm flex items-center justify-center'><BsPlusLg className='text-lg' /> </button>

@@ -10,6 +10,7 @@ export default function Cart() {
   return (
     <div className='h-full w-full flex flex-col bg-slate-100 overflow-y-scroll '>
          <Navbar/>
+         <div className='absolute h-[70vh] w-full bg-gradient-to-t bg-darkviolet from-slate-100 top-0 left-0'/>
          <div className='w-full my-10  flex flex-col gap-5 justify-center items-center '>
          <div className='w-full flex flex-col lg:flex-row gap-5 pt-5  max-w-3xl md:max-w-4xl lg:max-w-7xl px-5 h-full'>
           <div className='3/6 lg:basis-3/5   h-full w-full flex flex-col gap-5'>
@@ -22,18 +23,18 @@ export default function Cart() {
             <div className='flex flex-col gap-5 bg-white shadow-lg rounded-lg p-10'>
               <div className='text-lg font-bold p-3 bg-darkviolet rounded-lg text-white'>Shipping address</div>
               <div className='grid grid-cols-2 gap-3'>
-              <div className='flex flex-col col-span-2'>
+              <div className='flex flex-col col-span-2 gap-2'>
                       <div className='text-sm text-gray-400'>Address Type *</div>
                       <div className='flex flex-row gap-10'>
 
                       <div className='flex flex-row gap-2'>
 
-                      <input type='radio' className=" "  />
+                      <input type='radio' className=" accent-darkviolet h-5 w-5"  checked/>
                       <div className='text-sm'>Home</div>
                       </div>
                       <div className='flex flex-row gap-2'>
 
-                    <input type='radio' />
+                      <input type='radio' className=" accent-darkviolet h-5 w-5"   />
                     <div className='text-sm'>Office</div>
                     </div>
                   </div>
@@ -73,7 +74,7 @@ export default function Cart() {
               <div className='grid grid-cols-2 gap-3'>
               <div className='text-sm text-gray-400 col-span-2'>Select payment option *</div>
               <div className='flex flex-row gap-2 border rounded-xl p-3 shadow-md items-center'>
-                      <input type="radio" />
+                      <input type="radio" className=" accent-darkviolet h-5 w-5" checked />
                       <Image src={bdo} alt="bdo" height={50} width={100} className='h-16 w-20 rounded-lg' />
                       <div className='flex flex-col'>
                         <div className='text-customblack font-semibold'>Banco De Oro</div>
@@ -81,7 +82,7 @@ export default function Cart() {
                       </div>
                     </div>
                     <div className='flex flex-row gap-2 border rounded-xl p-3 shadow-md items-center'>
-                      <input type="radio" />
+                      <input type="radio" className=" accent-darkviolet h-5 w-5" />
                       <Image src={gcash} alt="gcash" height={100} width={100} className='h-16 w-20 rounded-lg' />
                       <div className='flex flex-col'>
                         <div className='text-customblack font-semibold'>Gcash</div>
@@ -89,7 +90,7 @@ export default function Cart() {
                       </div>
                     </div>
                     <div className='flex flex-row gap-2 border rounded-xl p-3 shadow-md items-center'>
-                      <input type="radio"  />
+                      <input type="radio" className=" accent-darkviolet h-5 w-5" />
                       <div className='h-16 w-20 rounded-lg'>
                         <BsCashCoin className='h-16 w-20 rounded-lg text-gray-400' />
                         </div>
@@ -116,7 +117,7 @@ export default function Cart() {
               <div className='text-lg font-bold p-3 bg-darkviolet rounded-lg text-white'>Your order</div>
               <div className='flex flex-row justify-between pt-5 mb-2'>
                 <div className='flex flex-row gap-2 items-center'>
-                <input type="checkbox"/>
+                <input type="checkbox" className=" accent-darkviolet h-4 w-4" />
                 <div className='font-medium text-sm'>List of orders</div>
                 </div>
                 <button className='font-medium text-sm'>Clear all</button>
@@ -125,9 +126,11 @@ export default function Cart() {
               <div className='flex flex-col gap-5 divide-y-2'>
               <div className='flex flex-row gap-2 justify-between  items-center w-full'>
               <div className='flex flex-row gap-2 items-center w-full'>
-              <input type="checkbox"/>
-              <div className='h-20 w-20 border rounded-lg'>
-                <Image src={bdo} alt="bdo" height={100} width={100} className='h-full w-full'/>
+              <input type="checkbox" className=" accent-darkviolet h-3 w-3" />
+              <div className='h-20 w-20  rounded-lg'>
+                <Image src={
+            "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+            } alt="bdo" height={100} width={100} className='h-full w-full'/>
               </div>
               <div className='flex flex-col '>
                 <div className='text-sm font-semibold'>
@@ -146,9 +149,11 @@ export default function Cart() {
               </div>
               <div className='flex flex-row gap-2 justify-between pt-5 items-center w-full'>
               <div className='flex flex-row gap-2 items-center w-full'>
-                <input type="checkbox"/>
-              <div className='h-20 w-20 border rounded-lg'>
-                <Image src={bdo} alt="bdo" height={100} width={100} className='h-full w-full'/>
+                <input type="checkbox" className=" accent-darkviolet h-3 w-3" />
+              <div className='h-20 w-20  rounded-lg'>
+                <Image src={
+              "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
+              } alt="bdo" height={100} width={100} className='h-full w-full'/>
               </div>
               <div className='flex flex-col '>
                 <div className='text-sm font-semibold'>
@@ -160,7 +165,7 @@ export default function Cart() {
               </div>
               <div className='flex justify-evenly gap-5 items-center'>
               <button className='bg-darkviolet p-2 text-white rounded-full'><BsDashLg/></button>
-                  <span className='text-xl font-medium'>5</span>
+                  <span className='text-xl font-medium'>3</span>
                 
                   <button className='bg-darkviolet p-2 text-white rounded-full'><BsPlusLg/></button>
               </div>

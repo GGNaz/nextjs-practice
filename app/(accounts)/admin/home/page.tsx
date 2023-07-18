@@ -157,8 +157,8 @@ export default function Homepage() {
                     delay={0.2}
                     key={id}
                   >
-                    <div className='bg-white p-5 flex flex-col  items-center shadow-lg rounded-xl relative gap-5' key={id}>
-                      <button className='absolute right-5 top-5 flex flex-row items-center justify-center gap-1 text-brandviolet'>
+                    <div className='bg-white cursor-pointer p-5 flex flex-col  items-center shadow-lg rounded-xl relative gap-5' key={id}>
+                      <button className='absolute bg-red-300 shadow-xl right-0 p-2 top-5 flex flex-row items-center justify-center gap-1 text-white'>
                           <BsHeartFill className='h-5 w-5  hover:text-darkviolet'/><span>{rating?.rate}</span>
                       </button>  
                       <div className='h-36 w-36 md:h-52 md:w-52 flex justify-center items-center'>
@@ -195,8 +195,8 @@ export default function Homepage() {
                   delay={0.5}
                   key={id}
                 >
-                  <div className={`flex ${id%2 === 0 ? "flex-row-reverse divide-x-2 divide-x-reverse" :"flex-row divide-x-2"} justify-evenly w-full  bg-white rounded-lg shadow-lg p-5`} key={id}>
-                  <div className='flex justify-center items-center w-full'>
+                  <div className={`flex ${id%2 === 0 ? "flex-col md:flex-row-reverse divide-x-0 md:divide-x-2 md:divide-x-reverse" :"flex-col md:flex-row divide-x-0 md:divide-x-2"} justify-evenly w-full  bg-white rounded-lg shadow-lg p-5`} key={id}>
+                  <div className='flex justify-center items-center w-full md:w-fit h-56 md:h-96'>
                     <Image src={image} height={300} width={300} className='' alt={title}/>
                   </div>
                   <div className='w-full flex flex-col justify-center'>

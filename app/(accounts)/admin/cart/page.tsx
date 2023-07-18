@@ -71,9 +71,9 @@ export default function Cart() {
                   >
             <div className='flex flex-col gap-5 bg-white shadow-lg rounded-lg p-10'>
               <div className='text-lg font-bold p-3 bg-darkviolet rounded-lg text-white'>Payment Method</div>
-              <div className='grid grid-cols-2 gap-3'>
-              <div className='text-sm text-gray-400 col-span-2'>Select payment option *</div>
-              <div className='flex flex-row gap-2 border rounded-xl p-3 shadow-md items-center'>
+              <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>
+              <div className='text-sm text-gray-400 col-span-1 md:col-span-2'>Select payment option *</div>
+                    <div className='flex flex-row gap-2 border rounded-xl p-3 shadow-md items-center'>
                       <input type="radio" className=" accent-darkviolet h-5 w-5" checked />
                       <Image src={bdo} alt="bdo" height={50} width={100} className='h-16 w-20 rounded-lg' />
                       <div className='flex flex-col'>

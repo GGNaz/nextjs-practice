@@ -22,8 +22,6 @@ export default function Home() {
   //   getUser
   // );
 
-  // console.log("isLoading", isLoading);
-
   // useEffect(() => {
   //   console.log("awit");
   // }, []);

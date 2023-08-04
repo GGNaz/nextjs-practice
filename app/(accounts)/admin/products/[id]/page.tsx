@@ -19,22 +19,40 @@ import * as MuiIcons from "@mui/icons-material";
 import HOCLoading from "@/components/loading/HOCLoading";
 import Link from "next/link";
 import Navbar from "@/components/navbar/Navbar";
+import { useDispatch } from "react-redux";
+import { addToCartFunc } from "@/redux/features/cartSlice";
+import { useAppSelector } from "@/redux/hooks";
 
-export default function page({ params: { id } }: any) {
+export default function ViewProducts({ params: { id } }: any) {
+  const dispatch = useDispatch();
+
+  const [ctr, setCtr] = useState<number>(1);
   const {
     data: viewProduct,
     error,
     isLoading,
   } = useSWR(`https://fakestoreapi.com/products/${id}`, apiGet);
-  const [ctr, setCtr] = useState<number>(1);
+  const myCart = useAppSelector((state) => state.cartReducer.cart);
+  console.log("🚀 ~ file: page.tsx:36 ~ ViewProducts ~ MyCart:", myCart);
+
   const { title, image, category, price, rating, description } =
     viewProduct?.data ?? {};
-  console.log("viewProduct", viewProduct?.data);
+
+  const quantityCounter = (action: string) => {
+    if (action === "add") return setCtr((prev) => (prev += 1));
+    else return setCtr((prev) => (prev += 1));
+  };
+
+  const addToCart = () => {
+    const params = { ...viewProduct?.data, quantity: ctr };
+    dispatch(addToCartFunc(params));
+  };
+
   return (
     <Box sx={{ height: "100vh", width: "100%" }}>
       <Navbar />
       {!isLoading ? (
-        <Container maxWidth="md" sx={{ pt: 8, pb: 3, ...flexCol, gap: 5 }}>
+        <Container maxWidth="lg" sx={{ pt: 9, pb: 3, ...flexCol, gap: 5 }}>
           <Box
             sx={{
               ...flexRow,
@@ -60,7 +78,7 @@ export default function page({ params: { id } }: any) {
               {category}
             </Typography>
           </Box>
-          <Grid container spacing={2}>
+          <Grid container spacing={2} sx={{ height: "100%" }}>
             <Grid
               item
               md={6}
@@ -69,19 +87,23 @@ export default function page({ params: { id } }: any) {
                 ...flexCol,
                 justifyContent: "center",
                 alignItems: "center",
-                height: "100%",
+                alignContent: "center",
+                height: "fit",
                 width: "100%",
                 p: 5,
                 gap: 1,
+                minHeight: "100%",
               }}
             >
-              <Image
-                src={image}
-                alt={image}
-                height={200}
-                width={200}
-                style={{ width: "fit-content" }}
-              />
+              <Box>
+                <Image
+                  src={image}
+                  alt={image}
+                  height={200}
+                  width={200}
+                  style={{ width: "fit-content" }}
+                />
+              </Box>
             </Grid>
             <Grid item xs={12} md={6}>
               <Box sx={{ ...flexCol, gap: 2 }}>
@@ -128,13 +150,24 @@ export default function page({ params: { id } }: any) {
                         border: "1px solid #4B485D",
                       }}
                     >
-                      <Button sx={{ color: "#4B485D" }}>
+                      <Button
+                        sx={{ color: "#4B485D" }}
+                        onClick={() => ctr !== 1 && quantityCounter("sub")}
+                      >
                         <MuiIcons.KeyboardArrowLeftRounded />
                       </Button>
-                      <Typography sx={{ color: "#4B485D", fontWeight: 600 }}>
-                        1
+                      <Typography
+                        sx={{
+                          color: "#4B485D",
+                          fontWeight: 600,
+                        }}
+                      >
+                        {ctr}
                       </Typography>
-                      <Button sx={{ color: "#4B485D" }}>
+                      <Button
+                        sx={{ color: "#4B485D" }}
+                        onClick={() => quantityCounter("add")}
+                      >
                         <MuiIcons.KeyboardArrowRightRounded />
                       </Button>
                     </Box>
@@ -148,6 +181,9 @@ export default function page({ params: { id } }: any) {
                         height: "100%",
                         borderRadius: "10px",
                         textTransform: "none",
+                      }}
+                      onClick={() => {
+                        addToCart();
                       }}
                     >
                       Add to Cart

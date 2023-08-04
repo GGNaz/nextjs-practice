@@ -118,18 +118,24 @@ export default function Products() {
                         ...flexRow,
                         position: "absolute",
                         right: 0,
-                        top: 5,
+                        top: 10,
                         alignItems: "center",
                         justifyContent: "center",
                         gap: 1,
-                        p: 2,
+                        p: 1,
+                        bgcolor: "#F4A0A1",
+                        borderBottomLeftRadius: "10px",
+                        borderTopLeftRadius: "10px",
+                        boxShadow: "10px 10px 15px 1px grey",
                       }}
                     >
                       <MuiIcons.Star
-                        sx={{ color: "#E1C96C" }}
+                        sx={{ color: "white" }}
                         // className="h-5 w-5  hover:text-darkviolet"
                       />
-                      <Typography>{rating?.rate}</Typography>
+                      <Typography sx={{ color: "white" }}>
+                        {rating?.rate}
+                      </Typography>
                     </Box>
                     <Box
                       sx={{

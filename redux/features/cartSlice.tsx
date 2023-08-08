@@ -90,12 +90,52 @@ export const cart = createSlice({
       console.log("🚀 ~ file: cart.tsx:72 ~ action:", action.payload);
       // state.cart = action.payload;
     },
+    addQuantityCtr: (state: any, action: PayloadAction<CartProps>) => {
+      const checkIfExist = state.cart.findIndex(
+        (data: CartProps) => data.id === action.payload.id,
+      );
+      if (checkIfExist >= 0) {
+        state.cart[checkIfExist].quantity =
+          state.cart[checkIfExist].quantity + 1;
+      }
+
+      // state.cart = action.payload;
+    },
+    subQuantityCtr: (state: any, action: PayloadAction<CartProps>) => {
+      const checkIfExist = state.cart.findIndex(
+        (data: CartProps) => data.id === action.payload.id,
+      );
+      if (checkIfExist >= 0) {
+        if (state.cart[checkIfExist].quantity > 1) {
+          state.cart[checkIfExist].quantity =
+            state.cart[checkIfExist].quantity - 1;
+        }
+      }
+
+      // state.cart = action.payload;
+    },
+    removeSpecificItem: (
+      state: any,
+      action: PayloadAction<number | undefined>,
+    ) => {
+      if (state.cart.length > 0) {
+        const checkIfExist = state.cart.findIndex(
+          (data: CartProps) => data.id === action.payload,
+        );
+        if (checkIfExist >= 0) {
+          state.cart.splice(checkIfExist, 1);
+        }
+      }
+    },
   },
 });
 
 export const {
   getCart,
   addToCartFunc,
+  removeSpecificItem,
+  addQuantityCtr,
+  subQuantityCtr,
   // increment,
   // incrementByAmount,
   // decrement,
